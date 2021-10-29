@@ -1,0 +1,22 @@
+.OnlineShop-container {
+  font-family: Helvetica Neue;
+  width: 400px;
+  min-height: 520px;
+  border: 1px solid black;
+  box-shadow: 0px 0px 10px #ebf0ff;
+  border-radius: 24px;
+  padding: 20px 40px;
+
+  &_block-nav {
+    display: flex;
+    align-items: center;
+    margin-bottom: 33px;
+    & img {
+      margin: 0 15px;
+    }
+    & span {
+      font-size: 12px;
+      cursor: pointer;
+    }
+  }
+}
