@@ -8,24 +8,31 @@ import useOnlineShop from "./useOnlineShop";
 import "./OnlineShop.scss";
 
 const OnlineShop = () => {
+ 
   const {
     showComponent,
     toggolComponentDelivery,
-    toggolComponentPayment,
+    toggleSuccessPage,
+    successPage
   } = useOnlineShop();
 
   return (
-    <div className="OnlineShop-container">
-      <div className="OnlineShop-container_block-nav">
-        <span onClick={toggolComponentPayment}>Доставка</span>
-        <img src={Row} alt="row" />
-        <span onClick={toggolComponentDelivery}>Оплата</span>
-      </div>
-      {showComponent ? (
-        <Payment  />
-      ) : (
-        <Delivery toggolComponentDelivery={toggolComponentDelivery} />
-      )}
+    <div className={successPage ? `OnlineShop-container sccessStyle` : `OnlineShop-container`}>
+      {successPage ? <SuccessPage/> :
+      <>
+       <div className="OnlineShop-container_block-nav">
+       <span>Доставка</span>
+       <img src={Row} alt="row" />
+       <span onClick={toggolComponentDelivery}>Оплата</span>
+     </div>
+     { showComponent ? 
+      <Payment  toggleSuccessPage={toggleSuccessPage}/>
+    : 
+      <Delivery toggolComponentDelivery={toggolComponentDelivery} />}
+   </>
+     
+      }
+     
     </div>
   );
 };

@@ -1,13 +1,8 @@
-import { useState } from "react";
-
 const usePayment = (toggleSuccessPage) => {
-  const [successPage, setSuccessPage] = useState(false);
-  console.log();
-
   const handleSubmit = (values) => {
     toggleSuccessPage();
-    setSuccessPage(true);
   };
+
   const initialValues = {
     cardName: "",
     cardNumber: "",
@@ -15,7 +10,7 @@ const usePayment = (toggleSuccessPage) => {
     cvv: "",
   };
 
-  return { handleSubmit, initialValues, successPage, toggleSuccessPage };
+  return { handleSubmit, initialValues, toggleSuccessPage };
 };
 
 export default usePayment;

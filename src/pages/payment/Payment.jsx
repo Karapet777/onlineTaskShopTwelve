@@ -2,17 +2,15 @@ import React from "react";
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import { validationSchema } from "./validationSchema";
 import usePayment from "./usePayment";
-import SuccessPage from "../success/Success";
 
 import "./Payment.scss";
 
-const Payment = () => {
-  const { handleSubmit, initialValues, successPage } =
-    usePayment();
+const Payment = ({toggleSuccessPage}) => {
+  const { handleSubmit, initialValues } =
+    usePayment(toggleSuccessPage);
 
   return (
     <div className="payment-container">
-      {!successPage ? (
         <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit}
@@ -41,7 +39,7 @@ const Payment = () => {
                   className="payment-container_input"
                   name="cardNumber"
                   type="text"
-                  placeholder="XXXX XXXX XXXX XXXX XXXX"
+                  placeholder="XXXX XXXX XXXX XXXX"
                 />
                 <ErrorMessage
                   className="text-red"
@@ -61,7 +59,7 @@ const Payment = () => {
                 />
                 <ErrorMessage
                   className="text-red"
-                  name="cardNumber"
+                  name="mmyy"
                   component="div"
                 />
               </div>
@@ -74,7 +72,7 @@ const Payment = () => {
                 />
                 <ErrorMessage
                   className="text-red"
-                  name="cardNumber"
+                  name="cvv"
                   component="div"
                 />
               </div>
@@ -84,9 +82,6 @@ const Payment = () => {
             </button>
           </Form>
         </Formik>
-      ) : (
-        <SuccessPage />
-      )}
     </div>
   );
 };
